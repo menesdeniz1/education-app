@@ -75,46 +75,9 @@ class ChatActivity : AppCompatActivity() {
     }
 
     private fun callAPI(question: String) {
-        // okhttp
-        messageList.add(Message("Typing... ", Message.SENT_BY_BOT))
-
-        val jsonBody = JSONObject()
-        try {
-            jsonBody.put("model", "text-davinci-003")
-            jsonBody.put("prompt", question)
-            jsonBody.put("max_tokens", 1000)
-            jsonBody.put("temperature", 0)
-        } catch (e: JSONException) {
-            e.printStackTrace()
-        }
-        val body = RequestBody.create(JSON, jsonBody.toString())
-        val request = Request.Builder()
-            .url("https://api.openai.com/v1/completions")
-            .header("Authorization", "Bearer REDACTED_REVOKE_BEFORE_USE")
-            .post(body)
-            .build()
-
-        client.newCall(request).enqueue(object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-                addResponse("Failed to load response due to " + e.message)
-            }
-
-            @Throws(IOException::class)
-            override fun onResponse(call: Call, response: Response) {
-                if (response.isSuccessful) {
-                    var jsonObject: JSONObject? = null
-                    try {
-                        jsonObject = JSONObject(response.body?.string())
-                        val jsonArray = jsonObject.getJSONArray("choices")
-                        val result = jsonArray.getJSONObject(0).getString("text")
-                        addResponse(result.trim())
-                    } catch (e: JSONException) {
-                        e.printStackTrace()
-                    }
-                } else {
-                    addResponse("Failed to load response due to " + response.body?.string())
-                }
-            }
-        })
+        addToChat(
+            "Chat is disabled in this public demo. A secure backend is required.",
+            Message.SENT_BY_BOT
+        )
     }
 }

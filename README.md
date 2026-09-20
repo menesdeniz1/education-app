@@ -1,9 +1,12 @@
 # Education App for Dyslexic Kids
+> University team project. The legacy AI chat is disabled in the current demo;
+> see [maintenance and setup notes](PUBLICATION_NOTES.md). This coursework is not
+> a clinically validated learning intervention.
 For this project our duty was to create an Android application that will be used by kids 7-10 years old in the world.
 ### FEATURES
 -	Sign In/Up with Firebase
 -	Specific design for dyslexic kid
--	Official ChatGPT API
+-	Legacy AI chat (currently disabled; a secure backend is required)
 -	Separate learning and playing pages
 -	Learn to read analog and digital clock
 -	Learn the seasons, days and months with multimedia
